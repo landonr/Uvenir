@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardLayout"
+    android:layout_width="300dp"
+    android:layout_height="400dp"
+    tools:ignore="Deprecated">
+	
+    <ImageView
+        android:id="@+id/photoView"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_x="0dp"
+        android:layout_y="0dp"
+        android:contentDescription="@string/photoHolder"
+        android:src="@drawable/instasample" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_x="0dp"
+        android:layout_y="300dp"
+        android:contentDescription="@string/bottomHolder"
+        android:src="@drawable/uvenirbottom" />
+
+    <TextView
+        android:id="@+id/tweetTextView"
+        android:layout_width="280dp"
+        android:layout_height="46dp"
+        android:layout_x="10dp"
+        android:layout_y="307dp"
+        android:textSize="24dp" />
+    
+    <TextView
+        android:id="@+id/userTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="10dp"
+        android:layout_y="356dp" />
+    
+    <TextView
+        android:id="@+id/dateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="10dp"
+        android:layout_y="374dp" />
+
+</AbsoluteLayout>
