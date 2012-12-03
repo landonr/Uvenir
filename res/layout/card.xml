@@ -2,48 +2,49 @@
 <AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardLayout"
-    android:layout_width="300dp"
-    android:layout_height="400dp"
-    tools:ignore="Deprecated">
+    android:layout_width="490dp"
+    android:layout_height="500dp"
+    android:paddingLeft="115dp"
+    tools:ignore="Deprecated" >
 	
     <ImageView
         android:id="@+id/photoView"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="375dp"
+        android:layout_height="375dp"
         android:layout_x="0dp"
         android:layout_y="0dp"
-        android:contentDescription="@string/photoHolder"
+        android:contentDescription=""
         android:src="@drawable/instasample" />
 
     <ImageView
         android:id="@+id/imageView1"
-        android:layout_width="300dp"
-        android:layout_height="100dp"
+        android:layout_width="375dp"
+        android:layout_height="125dp"
         android:layout_x="0dp"
-        android:layout_y="300dp"
-        android:contentDescription="@string/bottomHolder"
+        android:layout_y="375dp"
+        android:contentDescription=""
         android:src="@drawable/uvenirbottom" />
 
     <TextView
         android:id="@+id/tweetTextView"
-        android:layout_width="280dp"
-        android:layout_height="46dp"
-        android:layout_x="10dp"
-        android:layout_y="307dp"
+        android:layout_width="350dp"
+        android:layout_height="57.5dp"
+        android:layout_x="12.5dp"
+        android:layout_y="384dp"
         android:textSize="24dp" />
     
     <TextView
         android:id="@+id/userTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="10dp"
-        android:layout_y="356dp" />
+        android:layout_x="12.5dp"
+        android:layout_y="445dp" />
     
     <TextView
         android:id="@+id/dateTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="10dp"
-        android:layout_y="374dp" />
+        android:layout_x="12.5dp"
+        android:layout_y="468dp" />
 
 </AbsoluteLayout>

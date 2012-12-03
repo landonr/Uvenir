@@ -95,7 +95,7 @@ public final class HorizontalPager extends LinearLayout {
 	private int mTouchState = TOUCH_STATE_REST;
 	private VelocityTracker mVelocityTracker;
 	private int mLastSeenLayoutWidth = -1;
-	private int viewWidth = 302; //border :/
+	private int viewWidth = 300; //border :/
 	private int viewSpacing = 100;
 
 	/**
@@ -138,6 +138,7 @@ public final class HorizontalPager extends LinearLayout {
 	 * pager.
 	 */
 	private void init() {
+		this.layout(1280, 60, 100, 100);
 		mScroller = new Scroller(getContext());
 
 		// Calculate the density-dependent snap velocity in pixels
@@ -151,26 +152,20 @@ public final class HorizontalPager extends LinearLayout {
 		mTouchSlop = configuration.getScaledTouchSlop();
 		mMaximumVelocity = configuration.getScaledMaximumFlingVelocity();
 	}
-
+	
 	@Override
 	protected void onMeasure(final int widthMeasureSpec,
 			final int heightMeasureSpec) {
-		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+		int myHeightMeasureSpec = MeasureSpec.makeMeasureSpec(600, MeasureSpec.EXACTLY);
+		final int heightMode = MeasureSpec.getMode(myHeightMeasureSpec);
+		final int height = MeasureSpec.getSize(myHeightMeasureSpec);
+		Log.v("derp", "height: " + heightMode);
+		
+		super.onMeasure(widthMeasureSpec, myHeightMeasureSpec);
 
+
+		
 		final int width = MeasureSpec.getSize(widthMeasureSpec);
-		int widthMode = MeasureSpec.getMode(widthMeasureSpec);
-		widthMode = -2147483648;
-		if (widthMode != MeasureSpec.EXACTLY) {
-			// throw new
-			// IllegalStateException("ViewSwitcher can only be used in EXACTLY mode.");
-		}
-
-		final int heightMode = MeasureSpec.getMode(heightMeasureSpec);
-		final int height = MeasureSpec.getSize(heightMeasureSpec);
-		if (heightMode != MeasureSpec.EXACTLY) {
-			// throw new
-			// IllegalStateException("ViewSwitcher can only be used in EXACTLY mode.");
-		}
 
 		// The children are given the same width and height as the workspace
 		final int count = getChildCount();
@@ -178,7 +173,7 @@ public final class HorizontalPager extends LinearLayout {
 			getChildAt(i).measure(viewWidth, heightMeasureSpec);
 			//getChildAt(i).measure(widthMeasureSpec, heightMeasureSpec-100);
 		}
-		Log.v("derp", "width: " + widthMode + " height: " + height);
+		Log.v("derp", "width: " + width + " height: " + height);
 
 		if (mFirstLayout) {
 			scrollTo(mCurrentScreen * width, 0);
@@ -210,6 +205,9 @@ public final class HorizontalPager extends LinearLayout {
 	@Override
 	protected void onLayout(final boolean changed, final int l, final int t,
 			final int r, final int b) {
+		
+	    //this.requestLayout();
+		
 		final int count = getChildCount();
 		int childLeft = 1280/2 - (viewWidth+viewSpacing)/2;
 		for (int i = 0; i < count; i++) {
@@ -349,6 +347,7 @@ public final class HorizontalPager extends LinearLayout {
 				// Scroll to follow the motion event
 				final int deltaX = (int) (mLastMotionX - x);
 				mLastMotionX = x;
+
 				final int scrollX = getScrollX();
 
 				if (deltaX < 0) {
@@ -432,6 +431,11 @@ public final class HorizontalPager extends LinearLayout {
 	public int getCurrentScreen() {
 		return mCurrentScreen;
 	}
+	
+	public View getChildAtScreen(int i)
+	{
+		return getChildAt(getCurrentScreen());
+	}
 
 	/**
 	 * Sets the current screen.
@@ -449,6 +453,7 @@ public final class HorizontalPager extends LinearLayout {
 		} else {
 			scrollTo(mCurrentScreen * getWidth(), 0);
 		}
+		
 		invalidate();
 	}
 
@@ -519,7 +524,6 @@ public final class HorizontalPager extends LinearLayout {
 		 */
 		mNextScreen = Math.max(0, Math.min(whichScreen, getChildCount() - 1));
 		final int newX = mNextScreen * (viewWidth+(viewSpacing*2));
-		Log.v("derp", "newX " + newX);
 		final int delta = newX - getScrollX();
 
 		if (duration < 0) {

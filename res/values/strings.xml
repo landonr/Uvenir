@@ -7,7 +7,9 @@
     <string name="bottomHolder">Bottom Picture BG</string>
 
     <color name="red">#FA7777</color>
-
+    <color name="black1">#000000</color>
+    <color name="gray">#ababab</color>
+    
     <string name="title_activity_main">MainActivity</string>
     <string name="token">14841399-rI5F1sQuGQ6OVNUVLzzAGQDdQKySIuU2zDFKG7oNZ</string>
     <string name="secret">GS7RUgpl92Bxh1DhnqUpoaDY0psAHkwa9twfTUHnEL4</string>
